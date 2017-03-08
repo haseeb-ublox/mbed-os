@@ -1,9 +1,10 @@
 /* Linker script to configure memory regions. */
 MEMORY
 { 
-RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 192K
-CCMRAM (rw)      : ORIGIN = 0x10000000, LENGTH = 64K
-FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 1024K
+RAM (xrw)        : ORIGIN = 0x200001AC, LENGTH = 192K - 0x1AC /* 0x1AC is to leave room for vectors */
+CCM_RAM (rw)     : ORIGIN = 0x10000000, LENGTH = 64K
+BACKUP_SRAM (rw) : ORIGIN = 0x40024000, LENGTH = 4096
+FLASH (rx)       : ORIGIN = 0x08000000, LENGTH = 1024K
 }
 
 /* Linker script to place sections and symbol values. Should be used together
@@ -151,4 +152,23 @@ SECTIONS
 
     /* Check if data + heap + stack exceeds RAM limit */
     ASSERT(__StackLimit >= __HeapLimit, "region RAM overflowed with stack")
+
+    /* Code can explicitly ask for data to be 
+       placed into CCMRAM which will be left
+       uninitialized. 
+    */
+    .CCMRAM (NOLOAD):
+    {
+        Image$$RW_IRAM2$$Base = . ;
+        *(CCMRAM)
+        Image$$RW_IRAM2$$ZI$$Limit = .;
+    } > CCM_RAM
+
+    /* Backup SRAM, requires unlocking before access */
+    .BKPSRAM (NOLOAD):
+    {
+        Image$$RW_IRAM3$$Base = . ;
+        *(BKPSRAM)
+        Image$$RW_IRAM3$$ZI$$Limit = .;
+    } > BACKUP_SRAM
 }
