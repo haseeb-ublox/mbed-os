@@ -403,7 +403,7 @@ SPI4_IRQHandler
 SPI5_IRQHandler
 SPI6_IRQHandler
 SAI1_IRQHandler
-DMA2D_IRQHandle
+DMA2D_IRQHandler
                 B       .
 
                 ENDP

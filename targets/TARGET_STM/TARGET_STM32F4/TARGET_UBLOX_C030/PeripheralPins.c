@@ -29,7 +29,6 @@
  */
 
 #include "PeripheralPins.h"
-
 // =====
 // Note: Commented lines are alternative possibilities which are not used per default.
 //       If you change them, you will have also to modify the corresponding xxx_api.c file
@@ -50,6 +49,7 @@ const PinMap PinMap_ADC[] = {
 
 //*** I2C ***
 
+
 const PinMap PinMap_I2C_SDA[] = {
     {PB_7,  I2C_1, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C1)},
     {PC_9,  I2C_3, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C3)},
@@ -61,12 +61,13 @@ const PinMap PinMap_I2C_SCL[] = {
     {PA_8,  I2C_3, STM_PIN_DATA(STM_MODE_AF_OD, GPIO_NOPULL, GPIO_AF4_I2C3)},
     {NC,    NC,    0}
 };
+
 const PinMap PinMap_DAC[] = {
     {PA_5,  DAC_1, STM_PIN_DATA_EXT(STM_MODE_ANALOG, GPIO_NOPULL, 0, 2, 0)}, // DAC_OUT2 - ARDUINO D13
     {NC,   NC,    0}
 };
-//*** PWM ***
 
+//*** PWM ***
 
 const PinMap PinMap_PWM[] = {
     {PE_13, PWM_1, STM_PIN_DATA_EXT(STM_MODE_AF_PP, GPIO_PULLUP, GPIO_AF1_TIM1, 3, 0)}, // TIM1_CH3
