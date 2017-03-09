@@ -81,22 +81,23 @@ typedef enum {
     D3      = PB_14,  // UART3-RTS
     D4      = PB_1,
     D5      = PA_5,
-    D6      = PB_8,  // UART3-CTS
+    D6      = PB_8,   // UART3-CTS
     D7      = PB_15,  // UART3-RTS
-    D8      = PD_15,   // UART1-TX
-    D9      = PD_12,   // SDCard-CS
+    D8      = PD_15,  // UART1-TX
+    D9      = PD_12,  // SDCard-CS
     D10     = PE_11,  // SSEL
-    D11     = PE_6,  // MOSI
-    D12     = PE_5,  // MISO
-    D13     = PE_2,  // SCK
+    D11     = PE_6,   // MOSI
+    D12     = PE_5,   // MISO
+    D13     = PE_2,   // SCK
     D14     = PB_7,   // SDA
     D15     = PB_6,   // SCL
     // Internal
     LED1    = PE_3,   // Red / Mode
     LED2    = PE_4,   // Green / Switch-1
     LED3    = PE_1,   // Blue
+    LED4    = PE_7,   // A definition is required by the mbed platform RTC test code, this is the Ethernet connector yellow LED
     LED_RED = LED1,
-    SW0     = PC_13,   // Switch-0
+    SW0     = PC_13,  // Switch-0
 
     // ST-Link
     USBRX   = PA_10,
